@@ -27,15 +27,23 @@ bot.on("ready", () => {
   console.log("Mestre Saitama Online!");
 });
 
-bot.on("message", (msg) => {
+bot.on("message", async (msg) => {
   if (msg.author.bot) return;
   // if (msg.content.indexOf(config.prefix) !== 0) return;
 
   const defaultMsg = msg.content.toLowerCase().split(" ");
-  console.log(defaultMsg);
+
   defaultMsg.find((el) => {
     if (el === "careca") {
-      return msg.replay("tá falando de mim!?");
+      msg.reply("tá falando de mim!?");
+    }
+
+    if (el === "comida" || el === "comer") {
+      msg.reply("acho bom me chamar pra comer também!!");
+    }
+
+    if (el === "tornado") {
+      msg.reply("porquê está falando dessa pirralha?");
     }
   });
 
@@ -60,6 +68,22 @@ bot.on("message", (msg) => {
 
     case "saitamacareca":
       msg.reply("quem é você na fila do pão?");
+      break;
+
+    case "concordocomvc":
+      msg.reply("Obrigado!");
+      break;
+
+    case "ping":
+      const ms = await msg.channel.send("Ping!");
+      const clientms = ms.createdTimestamp - msg.createdTimestamp;
+      ms.edit(
+        "Pong! Client " +
+          clientms +
+          "ms / Bot+Server " +
+          Math.round(bot.ping) +
+          "ms"
+      );
       break;
   }
 });
