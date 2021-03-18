@@ -22,11 +22,11 @@ bot.on("ready", () => {
   console.log("Mestre Saitama Online!");
 });
 
-bot.on("message", (msg, client, args) => {
-  if (msg.author.bot) return;
-  // if (msg.content.indexOf(config.prefix) !== 0) return;
+bot.on("message", (msg) => {
   saitamaSpeeches(msg)
   commands(msg)
 });
 
 bot.login(token);
+
+module.exports = { bot }
