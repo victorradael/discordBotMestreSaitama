@@ -17,16 +17,16 @@ express()
   .get("/", (request, response) => response.render("pages/index"))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
-bot.on("ready", () => {
+bot.on("ready", async () => {
   bot.user.setActivity("chinelo no pernilongo!");
   console.log("Mestre Saitama Online!");
 });
 
 bot.on("message", (msg) => {
-  saitamaSpeeches(msg)
-  commands(msg)
+  saitamaSpeeches(msg);
+  commands(msg);
 });
 
 bot.login(token);
 
-module.exports = { bot }
+module.exports = { bot };

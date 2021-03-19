@@ -1,6 +1,18 @@
-const saitamaSpeeches = msg => {
+const axios = require("axios");
+
+const saitamaSpeeches = async (msg) => {
   if (msg.author.bot) return;
   const defaultMsg = msg.content.toLowerCase().split(" ");
+
+  if (msg.channel.name === "bot_advices") {
+    if (msg.content !== "!clr" && msg.content !== "!rm") {
+      msg.reply("I'm ready!");
+      setInterval(async () => {
+        let response = await axios.get("https://api.adviceslip.com/advice");
+        msg.channel.send(response.data.slip.advice);
+      }, 1000 * 60 * 30);
+    }
+  }
 
   defaultMsg.find((el) => {
     switch (el) {
@@ -14,7 +26,9 @@ const saitamaSpeeches = msg => {
       case "mercado":
       case "mercadinho":
       case "promoção":
-        msg.channel.send('AAAAAAAAAAAAAAAH, eu esqueci, hoje é dia de promoção no mercadinho!')
+        msg.channel.send(
+          "AAAAAAAAAAAAAAAH, eu esqueci, hoje é dia de promoção no mercadinho!"
+        );
         break;
     }
 
@@ -34,10 +48,14 @@ const saitamaSpeeches = msg => {
       }
     }
 
-    if (msg.content === 'boa noite' || msg.content === 'bom dia' || msg.content === 'boa tarde') {
-      return msg.reply(`${msg.content} pra você também!`)
+    if (
+      msg.content === "boa noite" ||
+      msg.content === "bom dia" ||
+      msg.content === "boa tarde"
+    ) {
+      return msg.reply(`${msg.content} pra você também!`);
     }
   });
-}
+};
 
-module.exports = { saitamaSpeeches }
+module.exports = { saitamaSpeeches };
