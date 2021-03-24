@@ -1,14 +1,14 @@
-
-
 const config = require("../config.json");
 const { clear } = require("./clear");
-const { heySaitama } = require("./heySaitama");
+const { superSaitama } = require("./super");
+const { idiot } = require("./idiot");
 const { messageRemove } = require("./messageDelete");
+const { hm } = require("./hm");
 
+const { ping } = require("./ping");
+const { out } = require("./out");
 
-const { ping } = require('./ping')
-
-const commands = async msg => {
+const commands = async (msg) => {
   if (msg.content.indexOf(config.prefix) !== 0) return;
 
   const msgs = msg.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -32,21 +32,33 @@ const commands = async msg => {
       break;
 
     case "ping":
-      ping(msg)
+      ping(msg);
       break;
 
     case "clr":
-      clear(msg)
+      clear(msg);
       break;
 
     case "rm":
-      messageRemove(msg)
+      messageRemove(msg);
       break;
 
-    case "heysaitama":
-      heySaitama(msg)
+    case "super":
+      superSaitama(msg);
+      break;
+
+    case "idiot":
+      idiot(msg);
+      break;
+
+    case "hm":
+      hm(msg);
+      break;
+
+    case "out":
+      out(msg);
       break;
   }
-}
+};
 
-module.exports = { commands }
+module.exports = { commands };
