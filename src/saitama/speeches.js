@@ -57,6 +57,15 @@ const saitamaSpeeches = async (msg) => {
     ) {
       return msg.reply(`${msg.content} pra você também!`);
     }
+
+    if (
+      msg.content === "vai toma no cu" ||
+      msg.content === "vtnc" ||
+      msg.content === "se fude" ||
+      msg.content === "vsf"
+    ) {
+      return msg.reply(`${msg.content} vai você!`);
+    }
   });
 };
 
