@@ -45,6 +45,8 @@ const saitamaSpeeches = async (msg) => {
         case "maria":
           msg.reply("não chama ela assim! Pra você ela é Amorzinho!");
           break;
+        case "frango":
+          msg.channel.send("Tão falando de você Victor!");
       }
     }
 
